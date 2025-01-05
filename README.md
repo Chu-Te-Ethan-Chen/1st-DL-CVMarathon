@@ -1,14 +1,53 @@
 # 1st-DL-CVMarathon
 
-## 一、專題摘要 (解釋實作與說明需要解決的問題，限300~500字。)
+## 一、專題摘要
 
 期末專題主題：浣熊與袋鼠辨識模型
 期末專題基本目標 
 以yolov3訓練模型為基礎，訓練一個能夠辨識浣熊(raccoon)與袋鼠(kangaroo)的模型。
 以訓練好的模型辨識浣熊與袋鼠的測試圖片及影片。
 
+## 三、成果展示
 
-## 二、實作方法介紹 (介紹使用的程式碼、模組，並附上實作過程與結果的截圖，需圖文並茂。)
+### 1.Loss指標
+![Loss](https://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361442/large)
+
+| Epoch | 1   | 10  | 20  | 30  | 40  | 50  |
+|-------|-----|-----|-----|-----|-----|-----|
+| Loss  | 1761 | 26  | 20  | 18  | 18  | 17  |
+
+Loss下降的很快，但是在20 Epoch後就下降緩慢
+
+
+
+### 2.不同batch_size的辨識效果比較
+
+以batch_size=4與batch_size=8做比較
+
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361446/large)
+
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361445/large)
+
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361447/large)
+
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361448/large)
+
+batch_size增加雖然會使用更多的記憶體資源，但確實可以增加辨識度。
+
+
+
+### 3.影片辨識結果
+
+[kangaroo.mp4](https://drive.google.com/open?id=1-Fc7peSuGSGoAWvGsDwKdq11cB3kS5tS)
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361468/large)
+
+[raccoon.mp4](https://drive.google.com/open?id=1-Ilnwvv_V2lnJCYQOSwhuWQoEtmYhrx1)
+![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361477/large)
+
+但正面圖片的辨識率不錯。
+
+
+## 二、實作方法介紹
 
 1.使用的程式碼介紹
 
@@ -487,75 +526,6 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 ```
 
-## 三、成果展示 (介紹成果的特點為何，並撰寫心得。)
-
-1.Loss指標
-
-
-
-
- 	 	 	 	 	 	 
-Epoch	1	10	20	30	40	50
-Loss	1761	26	20	18	18	17
-Loss下降的很快，但是在20 Epoch後就下降緩慢
-
-
-
-2.不同batch_size的辨識效果比較
-
-
-
-以batch_size=4與batch_size=8做比較
-
-
-
-
-
-
-
-batch_size增加雖然會使用更多的記憶體資源，但確實可以增加辨識度。
-
-
-
-
-浣熊與袋鼠重疊的圖片無法準確分辨。
-
-
-
-3.影片辨識結果
-
-kangaroo.mp4
-
-https://drive.google.com/open?id=1-Fc7peSuGSGoAWvGsDwKdq11cB3kS5tS
-
-
-影片中也有誤認的情形。
-
-
-
-
-背影的部分無法辨識。
-
-
-
-raccoon.mp4
-
-https://drive.google.com/open?id=1-Ilnwvv_V2lnJCYQOSwhuWQoEtmYhrx1
-
-
-可能是毛色或型態有像袋鼠。
-
-
-但正面圖片的辨識率不錯。
-
-
-
-
-
-## 四、結論 (總結本次專題的問題與結果)
-將batch_size從4改成16可以增加辨識率。
-遇到同一張圖片會同時辨識成浣熊與袋鼠的情形。
-袋鼠的背影無法辨識。
-會把狗誤認成袋鼠。
-未來可以利用data augmentation的方式增加訓練資料。
-可以再進一步利用IoU及mAP指標檢視模型訓練成果。
+## 四、結論
+將batch_size從4改成16可以增加辨識率。遇到同一張圖片會同時辨識成浣熊與袋鼠的情形。袋鼠的背影無法辨識。會把狗誤認成袋鼠。
+未來可以利用data augmentation的方式增加訓練資料。可以再進一步利用IoU及mAP指標檢視模型訓練成果。
