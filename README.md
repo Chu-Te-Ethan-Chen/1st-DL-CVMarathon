@@ -37,14 +37,9 @@ batch_size增加雖然會使用更多的記憶體資源，但確實可以增加�
 
 
 ### 3.影片辨識結果
-
-[kangaroo.mp4](https://drive.google.com/open?id=1-Fc7peSuGSGoAWvGsDwKdq11cB3kS5tS)
 ![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361468/large)
 
-[raccoon.mp4](https://drive.google.com/open?id=1-Ilnwvv_V2lnJCYQOSwhuWQoEtmYhrx1)
 ![](http://clubfile.cupoy.com/00000170BAC9DD980000001A6375706F795F72656C656173654B5741535354434C55424E455753/1574048361477/large)
-
-但正面圖片的辨識率不錯。
 
 
 ## 二、實作方法介紹
